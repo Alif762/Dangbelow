@@ -15,6 +15,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scoreboard.Criteria;
 import org.bukkit.scoreboard.DisplaySlot;
 import org.bukkit.scoreboard.Objective;
+import org.bukkit.scoreboard.Score;
 import org.bukkit.scoreboard.Scoreboard;
 
 import java.io.File;
@@ -94,7 +95,7 @@ public class DangBelow extends JavaPlugin implements Listener {
             String text = texts.get(t.getUniqueId());
             if (text == null || text.equals(cache.get(t.getUniqueId()))) continue;
 
-            org.bukkit.scoreboard.Score s = obj.getScore(t.getName());
+            Score s = obj.getScore(t.getName());
             s.setScore(1);
             s.numberFormat(NumberFormat.fixed(
                     LegacyComponentSerializer.legacySection().deserialize(text)));
@@ -130,4 +131,4 @@ public class DangBelow extends JavaPlugin implements Listener {
         if (v >= 1_000) return String.format(Locale.US, "%.1fK", v / 1_000);
         return String.valueOf((long) v);
     }
-              }
+            }
